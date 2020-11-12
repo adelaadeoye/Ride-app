@@ -7,6 +7,7 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
 import HomeScreen from "./Screen/HomeScreen"
 import SignUpScreen from "./Screen/SignUpScreen";
+import SignInScreen from "./Screen/SignInScreen";
 
 const App = createStackNavigator({
   //Stack Navigator for Login and Sign up Screen
@@ -21,6 +22,20 @@ const App = createStackNavigator({
     screen: SignUpScreen,
     navigationOptions: {
       title: "Sign Up",
+      headerStyle: { backgroundColor: "#fff" },
+      // headerTintColor:"#",
+      headerTitleStyle: {
+        width: "80%",
+        textAlign: "center",
+        fontWeight: "bold",
+        color: "#00305C",
+      },
+    },
+  },
+  SignInScreen: {
+    screen: SignInScreen,
+    navigationOptions: {
+      title: "Sign In",
       headerStyle: { backgroundColor: "#fff" },
       // headerTintColor:"#",
       headerTitleStyle: {

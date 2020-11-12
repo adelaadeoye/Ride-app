@@ -166,7 +166,7 @@ export default function SignUpScreen(props) {
         }}
       >
         <Text>Already Signed up? </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>props.navigation.navigate("SignInScreen")} >
           <Text style={{ color: "#4169E1" }}>Login</Text>
         </TouchableOpacity>
       </View>
