@@ -12,6 +12,7 @@ const Contianer = styled.View`
   margin-top:40px;
   height:100%;
   background:red;
+  justify-content:center;
 `;
 
 export default function HomeScreen(props) {

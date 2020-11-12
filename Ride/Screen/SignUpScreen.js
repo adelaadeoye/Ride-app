@@ -6,8 +6,9 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-  Button,
   TextInput,
+  Button,
+  Alert,
 } from "react-native";
 
 import styled from "styled-components/native";
@@ -25,6 +26,22 @@ const InputView = styled.View`
   border: 1px solid #fff;
   background-color: #f7f7f7;
 `;
+
+const ButtonView = styled.View`
+justify-content: center;
+background: #4169E1,
+height: 50px;
+margin-top: 20px;
+border-radius: 5px;
+`;
+const ButtonText = styled.Text`
+text-align: center;
+color: #ffff;
+font-size: 18px
+font-weight: bold;
+
+`;
+
 export default function SignUpScreen(props) {
   const [userDetails, setUserDatails] = useState({
     fName: "",
@@ -38,6 +55,22 @@ export default function SignUpScreen(props) {
       setUserDatails({ ...userDetails, [name]: text });
     };
   };
+
+  const AlertMessage = () =>
+    Alert.alert(
+      "Congratulations",
+      "You have successfully Join the best Ride Platform",
+      [
+        {
+          text: "Skip",
+          onPress: () => console.log("Skip Pressed"),
+          
+        },
+        { text: "Tutorial", onPress: () => console.log("Tutorial Pressed") },
+      ],
+      { cancelable: false }
+    );
+
   return (
     <Contianer>
       <Text style={{ fontSize: 18, fontWeight: "bold" }}>
@@ -111,7 +144,6 @@ export default function SignUpScreen(props) {
         <InputView>
           <TextInput
             autoCompleteType="street-address"
-            keyboardType="phone-pad"
             onChangeText={changeText("city")}
             value={userDetails.city}
             style={{ height: "100%", fontSize: 16 }}
@@ -120,28 +152,24 @@ export default function SignUpScreen(props) {
         </InputView>
       </View>
 
-      <TouchableOpacity>
-        <View
-          style={{
-            justifyContent: "center",
-            backgroundColor: "#4169E1",
-            height: "100%",
-            marginTop: 20,
-            borderRadius: 5,
-          }}
-        >
-          <Text
-            style={{
-              textAlign: "center",
-              color: "#ffffff",
-              fontSize: 18,
-              fontWeight: "bold",
-            }}
-          >
-            Submit
-          </Text>
-        </View>
+      <TouchableOpacity onPress={AlertMessage}>
+        <ButtonView>
+          <ButtonText>Submit</ButtonText>
+        </ButtonView>
       </TouchableOpacity>
+      <View
+        style={{
+          justifyContent: "center",
+          marginTop: 10,
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
+        <Text>Already Signed up? </Text>
+        <TouchableOpacity>
+          <Text style={{ color: "#4169E1" }}>Login</Text>
+        </TouchableOpacity>
+      </View>
     </Contianer>
   );
 }
